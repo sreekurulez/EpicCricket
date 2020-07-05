@@ -1,0 +1,131 @@
+.logo{
+    height: 90px;
+    margin-top: 10px;
+}
+.toolbar{
+    height: 100px;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #161d4a;
+    position:fixed;
+    z-index: 100;
+    top:0;
+}
+
+#section4{
+    background-attachment: fixed;
+    background-size:cover;
+    background-image: url('../assets/background.jpg');
+}
+.bg-text{
+    color:lightgrey;
+    font-size: 2.5vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+}
+.text{
+    color:white;
+    font-size:2.2vw;
+    
+}
+
+.sideNav{
+    margin-top:100px;
+    width: 20vw;
+}
+.side-links{
+    color:#161d4a;
+    cursor: pointer;
+}
+
+.desc{
+    // font-size: 20px;
+}
+
+section{
+    min-height:70vh ;
+   &#team,&#section3{
+        background-color: #eaeaea;
+    }
+   &#contact{
+       background-color:#161d4a;       
+   }
+}
+
+img{
+    border-radius: 7px;
+    // border-top-right-radius: 7px;
+}
+
+.img-hover-zoom {
+    // height: 250px; /* [1.1] Set it as per your need */
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+  }
+  
+  /* [2] Transition property for smooth transformation of images */
+  .img-hover-zoom img {
+    transition: transform .8s ease;
+  }
+  
+  /* [3] Finally, transforming the image when container gets hovered */
+  .img-hover-zoom:hover img {
+    transform: scale(1.5);  
+  }
+
+.mem-title{
+    font-size: 16px;
+    font-weight: bold;
+    color:#007bff;
+    text-transform: uppercase;
+}
+
+.mem-role{
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.title{
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color:black
+}
+
+#contact{
+    *>.title{
+        color:white;
+        text-transform: unset;
+        font-size:20px
+    }
+}
+
+.contact{
+    color:#8a99c0
+}
+
+.sub-title{
+    font-size: 20px;
+}
+
+.container {
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gallery{
+      margin:0px !important;
+    *>img{
+        border:5px solid white;
+    }
+    
+  }
+
+  .nav-links {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }

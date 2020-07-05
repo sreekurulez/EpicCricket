@@ -1,0 +1,198 @@
+<mat-toolbar class="toolbar" color="primary" fxLayoutAlign="start center" fxLayoutGap="40px">
+    <div fxShow="true" fxHide.gt-sm="true" fxLayoutGap="30px" fxLayoutAlign="start center" fxFlex>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span fxFlex=20></span>
+        <span><img src="assets/Logo.png" class="logo" alt="Logo"></span>
+    </div>
+    <span fxFlex=30 fxHide.sm fxHide.lt-sm></span>
+    <span fxLayoutGap="30px" fxLayoutAlign="start center" fxHide.sm fxHide.lt-sm>
+        <span class="nav-links animate__animated animate__bounce" [class.active]="currentSection=='section1'"
+            (click)="scrollTo('section1')">Home</span>
+        <span class="nav-links" [class.active]="currentSection=='team'" (click)="scrollTo('team')">About Epic</span>
+        <span><img src="assets/Logo.png" class="logo" alt="Logo"></span>
+        <span class="nav-links" [class.active]="currentSection=='section4'"
+            (click)="scrollTo('section4')">Facitiles</span>
+        <span class="nav-links" [class.active]="currentSection=='section3'"
+            (click)="scrollTo('section3')">Gallery</span>
+        <span class="nav-links" [class.active]="currentSection=='contact'" (click)="scrollTo('contact')">Contact</span>
+    </span>
+</mat-toolbar>
+
+<mat-sidenav-container fxFlexFill>
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+        <div fxLayout="column" fxLayoutGap="20px" class="sideNav" fxLayoutAlign="Start center">
+            <span class="side-links" [class.active]="currentSection=='section1'"
+                (click)="scrollTo('section1')">Home</span>
+            <span class="side-links" [class.active]="currentSection=='team'" (click)="scrollTo('team')">About
+                Epic</span>
+            <span class="side-links" [class.active]="currentSection=='section4'"
+                (click)="scrollTo('section4')">Facitiles</span>
+            <span class="side-links" [class.active]="currentSection=='section3'"
+                (click)="scrollTo('section3')">Gallery</span>
+            <span class="side-links" [class.active]="currentSection=='contact'"
+                (click)="scrollTo('contact')">Contact</span>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+        <div id="parentDiv" scrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)"
+            style="height:100vh;overflow-y: scroll;">
+            <section id="section1" style="margin-top:100px;">
+                <div class="container">
+                    <carousel [slides]="slides" [animationType]="animationType"></carousel>
+                </div>
+            </section>
+
+            <section fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="15px" id="team"
+                fxLayoutAlign.gt-sm="center center">
+                <div fxFlex.gt-sm=50 fxLayoutAlign.gt-sm="center center" fxLayout="column">
+                    <img src="assets/brand.PNG" height="70vh">
+                    <img src="assets/Logo.png" height="150px" fxHide.sm fxHide.lt-sm>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="30px">
+                    <h1 fxFlexOffset.gt-sm="5" class="title"> ABOUT EPIC</h1>
+                    <h2>MISSION & VISION</h2>
+                    <span class="desc">
+                        EPIC cricket academy is a child academy formed after Kulathoor cricket academy (KRCA) 
+                        and is run by a group of young cricket enthusiast in Trivandrum. 
+                        One of our key member, TR Sudheesh former Kerala Renji trophy player (1998-1999) is 
+                        the head coach of our academy.
+                        <br>
+                        The vision and mission, to provide a platform for all young aspiring cricketers in India, 
+                        a place they can call home and where every opportunity will be provided to grow and most 
+                        importantly have fun.
+                        <br>
+                        Our other coaches work closely with T R Sudheesh, so as to provide the finest coaching programs 
+                        for school, club, amateur and professional cricketers of our academy.
+                        <br>
+                        Come and join our team of Highly skilled, fully qualified coaches who deliver an unparalleled cricketing experience in world 
+                        class facilities.
+                    </span>
+                </div>
+
+            </section>
+
+            <!-- <section fxLayout="column" fxLayoutGap="20px"  fxLayoutAlign="start center">
+    <span fxLayout="column" fxFlexOffset="5" fxLayoutAlign="center center">
+        <span class="title">
+            Meet The Team
+        </span>
+        <span class="sub-title">
+            Behind EPIC
+        </span>
+    </span>
+
+    <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <mat-card *ngFor="let mem of members|slice:0:3" fxFlex=25 class="mat-elevation-z8">
+            <div class="img-hover-zoom">
+                <img [src]="mem.img" height="200px" width="100%">
+            </div>
+            <mat-card-content fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+                <span class="mem-title" fxFlexOffset="5">{{mem.name}}</span>
+                <span class="mem-role">{{mem.role}}</span>
+                <span></span>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <mat-card *ngFor="let mem of members|slice:3:6" fxFlex=25 class="mat-elevation-z8">
+            <div class="img-hover-zoom">
+                <img [src]="mem.img" height="200px" width="100%">
+            </div>
+            <mat-card-content fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+                <span class="mem-title" fxFlexOffset="5">{{mem.name}}</span>
+                <span class="mem-role">{{mem.role}}</span>
+                <span></span>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <mat-card *ngFor="let mem of members|slice:6:9" fxFlex=25 class="mat-elevation-z8">
+            <div class="img-hover-zoom">
+                <img [src]="mem.img" height="200px" width="100%">
+            </div>
+            <mat-card-content fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+                <span class="mem-title" fxFlexOffset="5">{{mem.name}}</span>
+                <span class="mem-role">{{mem.role}}</span>
+                <span></span>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+
+    <div></div>
+    <div></div>
+
+</section> -->
+
+            <section fxLayout="column" fxLayoutGap="40px" id="section4" fxLayoutAlign="start stretch">
+                <span class="bg-text" fxFlexOffset="2" fxLayoutAlign="center center">Facilites</span>
+                <div fxLayout="row" fxFlex>
+                    <span fxFlex=10></span>
+                    <div class="bg" fxFlex=90 fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="20px grid"
+                        fxLayoutGap.lt-sm="20px" fxLayoutAlign="start stretch">
+                        <div *ngFor="let f of facilites" class="text" fxFlex=45 fxFLex.lt-sm=99
+                            fxLayoutAlign="center center" fxLayoutAlign.lt-sm="start center" fxLayoutGap="10px">
+                            <mat-icon color="warn">star</mat-icon>
+                            <span>{{f}}</span>
+                        </div>
+                    </div>
+                </div>
+                <span></span>
+
+            </section>
+
+            <section fxLayout="column" id="section3" fxLayoutAlign="start center" fxLayoutGap="10px">
+                <span class="title" fxFlexOffset="2">Gallery</span>
+                <div fxLayout="row wrap" class="gallery" fxLayoutGap="20px grid" fxLayoutGap.lt-sm="5px grid"
+                    fxLayoutAlign="center center">
+                    <div *ngFor="let mem of gallery| slice:0:9;let i=index">
+                        <div class="img-hover-zoom">
+                            <img [src]="mem.img" (click)="openDialog(mem.img)" height="250px" fxHide.sm fxHide.lt-sm>
+                            <img [src]="mem.img" (click)="openDialog(mem.img)" height="100px" fxHide.gt-sm>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section fxLayout="column" fxLayoutGap="20px" id="contact" fxLayoutAlign="start stretch">
+                <div fxFlexOffset="5"></div>
+                <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="start start" fxLayoutGap="20px">
+                    <span fxFlexOffset="10" class="contact" fxFlex=30 fxLayout="column" fxLayoutAlign="start stretch"
+                        fxLayoutGap="10px">
+                        <span class="title">Contact Info</span>
+                        <span>Epic Cricket Academy</span>
+                        <span>Opposite to TDS Tranquil</span>
+                        <span>Near Toyoto Showroom</span>
+                        <span>Attinkuzhy,Kazhakuttam</span>
+                        <span>Trivandrum,Kerala</span>
+                        <span>Mobile: 9061760042/ 8078277600</span>
+                    </span>
+                    <span class="title" fxFlex=50 fxLayout="column">
+                        <span>Location</span>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.4719771255423!2d76.87633581460375!3d8.550530493853643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bfd59ada343f%3A0x11c74379636abc60!2sEpic%20cricket%20academy!5e0!3m2!1sen!2sus!4v1593264377575!5m2!1sen!2sus"
+                            height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                            tabindex="0"></iframe>
+                    </span>
+                    <!-- <span class="title" fxFlex=30 fxLayout="column">
+                <span>Subscribe</span>
+                <span>
+
+                </span>
+            </span> -->
+                </div>
+                <div></div>
+                <div>
+
+                </div>
+            </section>
+        </div>
+
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
